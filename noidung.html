@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thư gửi anh 💌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <style>
+  body {
+  margin: 0;
+  font-family: 'Dancing Script', cursive;
+  color: #eee;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden; /* chỉ chặn tràn ngang, vẫn cho lướt dọc */
+}
+
+    /* Ảnh nền tối đi */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url('background.png') no-repeat center center fixed;
+      background-size: cover;
+      filter: brightness(70%);
+      z-index: -1;
+    }
+
+    /* Icon nhạc */
+    #music-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.6);
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 20;
+      transition: background 0.3s;
+    }
+    #music-btn:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    #music-btn span {
+      font-size: 24px;
+      color: white;
+    }
+
+        /* Nội dung thư */
+        .container {
+        display: none;
+        flex-direction: column;
+        gap: 20px;
+        padding: 40px 20px;
+        align-items: center;
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto; /* căn giữa ngang */
+        }
+    .letter {
+      background: #fdfcf8e6;
+      color: #333;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+      max-width: 700px;
+      line-height: 1.8;
+      backdrop-filter: blur(4px);
+      font-size: 1.5rem;
+    }
+
+    .letter h2 {
+      margin-top: 0;
+      font-size: 1.8rem;
+    }
+
+    /* Hộp chào */
+    #overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 10;
+      text-align: center;
+    }
+    #overlay h1 {
+      color: #fff;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      padding: 0 20px;
+    }
+    #overlay button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(45deg, #6a5acd, #836fff);
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    #overlay button:hover {
+      transform: scale(1.05);
+    }
+
+    /* Responsive cho mobile */
+    @media (max-width: 600px) {
+      .letter {
+        max-width: 90%;
+        padding: 15px;
+        font-size: 0.95rem;
+      }
+      .letter h2 {
+        font-size: 1.4rem;
+      }
+      #music-btn {
+        width: 40px;
+        height: 40px;
+        top: 10px;
+        right: 10px;
+      }
+      #overlay h1 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Nút bật nhạc -->
+  <button id="music-btn"><span>🎵</span></button>
+  <audio id="bg-music" loop>
+    <source src="Có Nhau.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ phát nhạc.
+  </audio>
+
+  <!-- Hộp thoại mở -->
+  <div id="overlay">
+    <h1>… And darling I will be loving you 'til we're 70</h1>
+    <button onclick="enterSite()">Bấm vào đây</button>
+  </div>
+
+  <!-- Nội dung thư -->
+  <div class="container" id="content">
+    <div class="letter">
+      <h2>Hii babii,    </h2>
+      <p>Em là một người thể hiện cảm xúc tốt hơn qua câu chữ nên bé viết lá thư này cho anh nhé. Và đáng ra, em sẽ đưa thư tay cho anh nhưng mà lại lỡ mất rùi.</p>
+      <p>Trong một tháng vừa rồi chắc anh cũng nhận ra, em là một đứa sống rất tình cảm, mít ướt và hay bất an. Vậy nên, trong tình yêu, em hay là người yêu nhiều hơn và chăm sóc người còn lại, thỉnh thoảng có thể hơi over nữa. Nhưng mà yêu anh, em được chiều, được yêu thương, và bằng một cách bình yên nào đó, em không phải gồng lên hoặc prove myself anything. </p>
+      <p>Em rất biết ơn điều đó.</p>
+      <p>Có một câu nói mà em rất ưng trong một bộ phim rom-com mà em thích: "You like because, and you love despite"</p>
+      <p>Em thích Hưng vì anh thông minh này, đẹp giai này, rất đam mê việc học và em thích cả cách anh nhận thức thế giới xung quanh nữa. Nhưng mà Hưng của em:
+        <p> - Thỉnh thoảng lù đù như một con rùa </p>
+        <p> - Hay rep tin nhắn chậm (đỡ hơn hồi c3)</p>
+        <p> - Cao su 30p (có hôm 1 TIẾNG)</p>
+        <P> - Và không multitask được</P>
+
+    <p> Nhưng mà trên tất cả những điều đó, </p>
+        <p>Em nghĩ là em yêu anh mất rồi Hưng ạ</p>
+    </div>
+
+    <div class="letter">
+      <p>Sang bên đấy, babi hãy học thật chămm, chơi thật vuii và giữ sức khỏe nữa. Em biết, anh rất muốn cùng em làm nhiều thứ, ngắm thật nhiều cảnh đẹp, và em cũng muốn, nên là em sẽ cố gắng babi ạ. 
+      <p>Nhưng mà mình cứ thong thả, bình tĩnh sống từng ngày với nhau, vì em có kế hoạch bên anh khá lâu đấy Hưng ạ.</p>
+      <p>Khi nào anh mệt, anh buồn hay thậm chí bất lực thì vẫn cứ nói với em. Vì em muốn anh biết là em luôn luôn quan tâm tới anh, and I will always be there. </p>
+      <p>I know you feel its your responsility to take care of me, but its my duty too. Cause love goes both way. </p>
+
+      <p> Thế nhá!</p>
+      <p> Call me whenever you want, you don't have to ask!</p>
+      <p> Miss u today and the day after</p>
+      <p> - Ngân của Hưng</p>
+      <p> P/S. Lần đầu em viết thư tình, đọc xong đừng có rep gì nha em ngại lắm</p>
+    </div>
+  </div>
+
+  <script>
+    function enterSite() {
+      document.getElementById('overlay').style.display = 'none';
+      document.getElementById('content').style.display = 'flex';
+    }
+
+    const musicBtn = document.getElementById('music-btn');
+    const bgMusic = document.getElementById('bg-music');
+    let isPlaying = false;
+
+    musicBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicBtn.innerHTML = '<span>🎵</span>';
+      } else {
+        bgMusic.play();
+        musicBtn.innerHTML = '<span>⏸️</span>';
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
+</body>
+</html>
